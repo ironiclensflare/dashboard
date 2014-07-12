@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data.Entity;
 
 namespace Dashboard.Models
 {
@@ -21,5 +22,11 @@ namespace Dashboard.Models
         public string Description { get; set; }
 
         public virtual ICollection<FormSubmission> FormSubmissions { get; set; }
+    }
+
+    public class DashboardFormSubmissions : DbContext
+    {
+        public DbSet<FormSubmission> FormSubmissions { get; set; }
+        public DbSet<Form> Forms { get; set; }
     }
 }
