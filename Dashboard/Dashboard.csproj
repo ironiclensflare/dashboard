@@ -230,6 +230,18 @@
     <Compile Include="Migrations\201407120943485_Setup.Designer.cs">
       <DependentUpon>201407120943485_Setup.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201407130923260_RemoveFormLink.cs" />
+    <Compile Include="Migrations\201407130923260_RemoveFormLink.Designer.cs">
+      <DependentUpon>201407130923260_RemoveFormLink.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201407130929318_RemoveVirtual.cs" />
+    <Compile Include="Migrations\201407130929318_RemoveVirtual.Designer.cs">
+      <DependentUpon>201407130929318_RemoveVirtual.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201407131054277_AddTimestamp.cs" />
+    <Compile Include="Migrations\201407131054277_AddTimestamp.Designer.cs">
+      <DependentUpon>201407131054277_AddTimestamp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\FormSubmission.cs" />
@@ -317,6 +329,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201407120943485_Setup.resx">
       <DependentUpon>201407120943485_Setup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407130923260_RemoveFormLink.resx">
+      <DependentUpon>201407130923260_RemoveFormLink.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407130929318_RemoveVirtual.resx">
+      <DependentUpon>201407130929318_RemoveVirtual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407131054277_AddTimestamp.resx">
+      <DependentUpon>201407131054277_AddTimestamp.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

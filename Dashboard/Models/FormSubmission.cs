@@ -6,12 +6,14 @@ using System.Data.Entity;
 
 namespace Dashboard.Models
 {
+    
     public class FormSubmission
     {
         public int FormSubmissionID { get; set; }
         public int FormID { get; set; }
+        public DateTime Created { get; set; }
 
-        public virtual Form Form { get; set; }
+        public Form Form { get; set; }
     }
 
     public class Form
@@ -20,8 +22,6 @@ namespace Dashboard.Models
         public string Name { get; set; }
         public string Area { get; set; }
         public string Description { get; set; }
-
-        public virtual ICollection<FormSubmission> FormSubmissions { get; set; }
     }
 
     public class DashboardFormSubmissions : DbContext

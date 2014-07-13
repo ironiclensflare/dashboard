@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Description;
 using Dashboard.Models;
 
 namespace Dashboard.Controllers.API
@@ -12,8 +16,14 @@ namespace Dashboard.Controllers.API
     {
         private DashboardFormSubmissions db = new DashboardFormSubmissions();
 
-        //POST: /api/form/submission
-        public HttpResponseMessage PostSubmission()
+        // GET: api/form
+        public IQueryable<FormSubmission> Get()
+        {
+            return db.FormSubmissions.Include(f => f.Form);
+        }
+
+        // POST: api/form
+        public HttpResponseMessage Post()
         {
             int formID;
 
@@ -25,28 +35,21 @@ namespace Dashboard.Controllers.API
             {
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
-
+            
             try
             {
                 FormSubmission f = new FormSubmission();
+                f.Created = DateTime.Now;
                 f.FormID = formID;
-
                 db.FormSubmissions.Add(f);
                 db.SaveChanges();
 
                 return new HttpResponseMessage(HttpStatusCode.Created);
             }
-
             catch (Exception)
             {
                 return new HttpResponseMessage(HttpStatusCode.NotFound);
             }
-        }
-
-        //GET: /api/form/submission
-        public HttpResponseMessage GetSubmission()
-        {
-            return new HttpResponseMessage(HttpStatusCode.NotImplemented);
         }
     }
 }
