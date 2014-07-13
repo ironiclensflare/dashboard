@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using System.Web.Http.Description;
 using Dashboard.Models;
 
 namespace Dashboard.Controllers.API
@@ -19,7 +15,9 @@ namespace Dashboard.Controllers.API
         // GET: api/form
         public IQueryable<FormSubmission> Get()
         {
-            return db.FormSubmissions.Include(f => f.Form);
+            // Only return submissions from today
+            DateTime today = DateTime.Now.Date;
+            return db.FormSubmissions.Where(f => f.Created >= today).Include(f => f.Form).OrderByDescending(f => f.FormSubmissionID);
         }
 
         // POST: api/form
