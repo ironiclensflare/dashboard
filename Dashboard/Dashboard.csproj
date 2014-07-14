@@ -220,9 +220,8 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\API\FormController.cs" />
+    <Compile Include="Controllers\FormsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\TestController.cs" />
-    <Compile Include="Controllers\TestFormController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -306,17 +305,12 @@
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Test\Create.cshtml" />
-    <Content Include="Views\Test\Delete.cshtml" />
-    <Content Include="Views\Test\Details.cshtml" />
-    <Content Include="Views\Test\Edit.cshtml" />
-    <Content Include="Views\Test\Index.cshtml" />
-    <Content Include="Views\TestForm\Create.cshtml" />
-    <Content Include="Views\TestForm\Delete.cshtml" />
-    <Content Include="Views\TestForm\Details.cshtml" />
-    <Content Include="Views\TestForm\Edit.cshtml" />
-    <Content Include="Views\TestForm\Index.cshtml" />
     <Content Include="Views\Home\Help.cshtml" />
+    <Content Include="Views\Forms\Create.cshtml" />
+    <Content Include="Views\Forms\Delete.cshtml" />
+    <Content Include="Views\Forms\Details.cshtml" />
+    <Content Include="Views\Forms\Edit.cshtml" />
+    <Content Include="Views\Forms\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

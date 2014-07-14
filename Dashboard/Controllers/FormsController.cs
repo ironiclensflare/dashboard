@@ -10,112 +10,107 @@ using Dashboard.Models;
 
 namespace Dashboard.Controllers
 {
-    public class TestController : Controller
+    public class FormsController : Controller
     {
         private DashboardFormSubmissions db = new DashboardFormSubmissions();
 
-        // GET: Test
+        // GET: Forms
         public ActionResult Index()
         {
-            var formSubmissions = db.FormSubmissions.Include(f => f.Form);
-            return View(formSubmissions.ToList());
+            return View(db.Forms.ToList());
         }
 
-        // GET: Test/Details/5
+        // GET: Forms/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            FormSubmission formSubmission = db.FormSubmissions.Find(id);
-            if (formSubmission == null)
+            Form form = db.Forms.Find(id);
+            if (form == null)
             {
                 return HttpNotFound();
             }
-            return View(formSubmission);
+            return View(form);
         }
 
-        // GET: Test/Create
+        // GET: Forms/Create
         public ActionResult Create()
         {
-            ViewBag.FormID = new SelectList(db.Forms, "FormID", "Name");
             return View();
         }
 
-        // POST: Test/Create
+        // POST: Forms/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "FormSubmissionID,FormID")] FormSubmission formSubmission)
+        public ActionResult Create([Bind(Include = "FormID,Name,Area,Description")] Form form)
         {
             if (ModelState.IsValid)
             {
-                db.FormSubmissions.Add(formSubmission);
+                db.Forms.Add(form);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.FormID = new SelectList(db.Forms, "FormID", "Name", formSubmission.FormID);
-            return View(formSubmission);
+            return View(form);
         }
 
-        // GET: Test/Edit/5
+        // GET: Forms/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            FormSubmission formSubmission = db.FormSubmissions.Find(id);
-            if (formSubmission == null)
+            Form form = db.Forms.Find(id);
+            if (form == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.FormID = new SelectList(db.Forms, "FormID", "Name", formSubmission.FormID);
-            return View(formSubmission);
+            return View(form);
         }
 
-        // POST: Test/Edit/5
+        // POST: Forms/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "FormSubmissionID,FormID")] FormSubmission formSubmission)
+        public ActionResult Edit([Bind(Include = "FormID,Name,Area,Description")] Form form)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(formSubmission).State = EntityState.Modified;
+                db.Entry(form).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.FormID = new SelectList(db.Forms, "FormID", "Name", formSubmission.FormID);
-            return View(formSubmission);
+            return View(form);
         }
 
-        // GET: Test/Delete/5
+        // GET: Forms/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            FormSubmission formSubmission = db.FormSubmissions.Find(id);
-            if (formSubmission == null)
+            Form form = db.Forms.Find(id);
+            if (form == null)
             {
                 return HttpNotFound();
             }
-            return View(formSubmission);
+            return View(form);
         }
 
-        // POST: Test/Delete/5
+        // POST: Forms/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            FormSubmission formSubmission = db.FormSubmissions.Find(id);
-            db.FormSubmissions.Remove(formSubmission);
+            Form form = db.Forms.Find(id);
+            db.Forms.Remove(form);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
