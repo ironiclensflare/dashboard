@@ -27,7 +27,7 @@ namespace Dashboard.Controllers.API
 
             try
             {
-                formID = Convert.ToInt16(System.Web.HttpContext.Current.Request.Headers["FormID"]);
+                formID = Convert.ToInt16(System.Web.HttpContext.Current.Request.QueryString["form"]);
             }
             catch (Exception)
             {
