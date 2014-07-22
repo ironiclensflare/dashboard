@@ -12,22 +12,24 @@ namespace Dashboard.Controllers.API
     {
         private DashboardFormSubmissions db = new DashboardFormSubmissions();
 
-        // GET: api/form
+        // GET: api/form/
         public IQueryable<FormSubmission> Get()
         {
             // Only return submissions from today
             DateTime today = DateTime.Now.Date;
-            return db.FormSubmissions.Where(f => f.Created >= today).Include(f => f.Form).OrderByDescending(f => f.FormSubmissionID);
+            return db.FormSubmissions.Where(f => f.Created >= today)
+                .Include(f => f.Form)
+                .OrderByDescending(f => f.FormSubmissionID);
         }
 
-        // POST: api/form
+        // POST: api/form/?id=3
         public HttpResponseMessage Post()
         {
             int formID;
 
             try
             {
-                formID = Convert.ToInt16(System.Web.HttpContext.Current.Request.QueryString["form"]);
+                formID = Convert.ToInt16(System.Web.HttpContext.Current.Request.QueryString["id"]);
             }
             catch (Exception)
             {

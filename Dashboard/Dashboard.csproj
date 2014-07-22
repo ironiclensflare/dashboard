@@ -75,16 +75,20 @@
     <Reference Include="RouteDebugger">
       <HintPath>..\packages\routedebugger.2.1.4.0\lib\net40\RouteDebugger.dll</HintPath>
     </Reference>
-    <Reference Include="SassAndCoffee.AspNet">
+    <Reference Include="SassAndCoffee.AspNet, Version=2.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\SassAndCoffee.AspNet.2.1.1.0\lib\net40\SassAndCoffee.AspNet.dll</HintPath>
     </Reference>
-    <Reference Include="SassAndCoffee.Core">
+    <Reference Include="SassAndCoffee.Core, Version=2.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\SassAndCoffee.Core.2.1.1.0\lib\net40-Client\SassAndCoffee.Core.dll</HintPath>
     </Reference>
-    <Reference Include="SassAndCoffee.JavaScript">
+    <Reference Include="SassAndCoffee.JavaScript, Version=2.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\SassAndCoffee.JavaScript.2.1.1.0\lib\net40-Client\SassAndCoffee.JavaScript.dll</HintPath>
     </Reference>
-    <Reference Include="SassAndCoffee.Ruby">
+    <Reference Include="SassAndCoffee.Ruby, Version=2.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\SassAndCoffee.Ruby.2.1.1.0\lib\net40-Client\SassAndCoffee.Ruby.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -350,7 +354,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>49565</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
