@@ -22,25 +22,14 @@ namespace Dashboard.Controllers.API
                 .OrderByDescending(f => f.FormSubmissionID);
         }
 
-        // POST: api/form/?id=3
-        public HttpResponseMessage Post()
-        {
-            int formID;
-
-            try
-            {
-                formID = Convert.ToInt16(System.Web.HttpContext.Current.Request.QueryString["id"]);
-            }
-            catch (Exception)
-            {
-                return new HttpResponseMessage(HttpStatusCode.BadRequest);
-            }
-            
+        // POST: api/form/3
+        public HttpResponseMessage Post(int id)
+        {        
             try
             {
                 FormSubmission f = new FormSubmission();
                 f.Created = DateTime.Now;
-                f.FormID = formID;
+                f.FormID = id;
                 db.FormSubmissions.Add(f);
                 db.SaveChanges();
 

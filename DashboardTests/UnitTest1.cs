@@ -5,10 +5,10 @@ using Dashboard.Models;
 namespace DashboardTests
 {
     [TestClass]
-    public class UnitTest1
+    public class ApiControllerTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void CheckPresenceOfQueryString()
         {
             
         }

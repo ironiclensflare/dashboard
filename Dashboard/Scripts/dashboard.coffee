@@ -12,7 +12,7 @@
 
 $('#start').click -> 
     getFormSubmissions()
-    setInterval getFormSubmissions, 30000
+    setInterval getFormSubmissions, 10000 #10 second delay between calls
     $(this).hide()
 
 $ ->
