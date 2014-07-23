@@ -17,7 +17,8 @@ namespace Dashboard.Controllers.API
         {
             // Only return submissions from today
             DateTime today = DateTime.Now.Date;
-            return db.FormSubmissions.Where(f => f.Created >= today)
+            return db.FormSubmissions
+                .Where(f => f.Created >= today)
                 .Include(f => f.Form)
                 .OrderByDescending(f => f.FormSubmissionID);
         }
