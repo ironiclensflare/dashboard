@@ -21,6 +21,7 @@
     @visitorsGauge = new JustGage
         id: 'visitorsGauge'
         value: 0
+        max: 300
         title: 'Website users'
         label: 'active right now'
 
