@@ -14,6 +14,8 @@ gapi.analytics.ready(function () {
     gapi.analytics.auth.on('success', function () {
         $('#auth-button').hide();
         getVisitors();
+        getIntranetVisitors();
         setInterval(getVisitors, 10000);
+        setInterval(getIntranetVisitors, 10000);
     })
 });
