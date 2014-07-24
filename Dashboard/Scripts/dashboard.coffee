@@ -5,7 +5,7 @@
 
 @getVisitors = ->
     gapi.client.analytics.data.realtime.get
-        ids: 'ga:81750023'
+        ids: 'ga:23580935'
         metrics: 'rt:activeUsers'
     .execute (response) ->
         total = response.totalsForAllResults['rt:activeUsers']
