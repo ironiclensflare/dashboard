@@ -9,8 +9,9 @@
         dimensions: 'rt:pageTitle'
         metrics: 'rt:activeUsers'
     .execute (response) ->
-        $('#website-pages').html('')
-        $('#website-pages').append('<p>' + page[0] + ' - ' + page[1] + '</p>') for page in response.rows
+        response.rows.sort (a, b) -> return(b[1] - a[1])
+        $('#website-pages').html('<tr><th>Page</th><th style="width:10%">Visitors</th></tr>')
+        $('#website-pages').append('<tr><td>' + response.rows[a][0] + '</td><td>' + response.rows[a][1] + '</td></tr>') for a in [0..9]
         total = response.totalsForAllResults['rt:activeUsers']
         visitorsGauge.refresh total
 
@@ -20,9 +21,9 @@
         dimensions: 'rt:pageTitle'
         metrics: 'rt:activeUsers'
     .execute (response) ->
-        console.log response
-        $('#intranet-pages').html('')
-        $('#intranet-pages').append('<p>' + page[0] + ' - ' + page[1] + '</p>') for page in response.rows
+        response.rows.sort (a, b) -> return(b[1] - a[1])
+        $('#intranet-pages').html('<tr><th>Page</th><th style="width:10%">Visitors</th></tr>')
+        $('#intranet-pages').append('<tr><td>' + response.rows[a][0] + '</td><td>' + response.rows[a][1] + '</td></tr>') for a in [0..9]
         total = response.totalsForAllResults['rt:activeUsers']
         intranetGauge.refresh total
 
