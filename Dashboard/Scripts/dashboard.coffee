@@ -10,8 +10,14 @@
         metrics: 'rt:activeUsers'
     .execute (response) ->
         response.rows.sort (a, b) -> return(b[1] - a[1])
-        $('#website-pages').html('<tr><th>Page</th><th style="width:10%">Visitors</th></tr>')
-        $('#website-pages').append('<tr><td>' + response.rows[a][0] + '</td><td>' + response.rows[a][1] + '</td></tr>') for a in [0..9]
+        $('#website-pages').html('<tr><th>Page</th><th style="width:10%; text-align:center">Visitors</th></tr>')
+
+        for a in [0..9]
+            if response.rows[a]?
+                $('#website-pages').append('<tr><td>' + response.rows[a][0] + '</td><td style="text-align:center">' + response.rows[a][1] + '</td></tr>')
+            else
+                $('#website-pages').append('')
+
         total = response.totalsForAllResults['rt:activeUsers']
         visitorsGauge.refresh total
 
@@ -22,8 +28,14 @@
         metrics: 'rt:activeUsers'
     .execute (response) ->
         response.rows.sort (a, b) -> return(b[1] - a[1])
-        $('#intranet-pages').html('<tr><th>Page</th><th style="width:10%">Visitors</th></tr>')
-        $('#intranet-pages').append('<tr><td>' + response.rows[a][0] + '</td><td>' + response.rows[a][1] + '</td></tr>') for a in [0..9]
+        $('#intranet-pages').html('<tr><th>Page</th><th style="width:10%; text-align:center">Visitors</th></tr>')
+        
+        for a in [0..9]
+            if response.rows[a]?
+                $('#intranet-pages').append('<tr><td>' + response.rows[a][0] + '</td><td style="text-align:center">' + response.rows[a][1] + '</td></tr>')
+            else
+                $('#intranet-pages').append('')
+        
         total = response.totalsForAllResults['rt:activeUsers']
         intranetGauge.refresh total
 
