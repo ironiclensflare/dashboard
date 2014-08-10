@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Dashboard.Models;
 
 namespace Dashboard.Controllers.API
 {
@@ -11,12 +12,19 @@ namespace Dashboard.Controllers.API
     {
         public HttpResponseMessage Post()
         {
-            IEnumerable<string> headerValues = Request.Headers.GetValues("Email");
-            var email = headerValues.FirstOrDefault();
+            string email = Request.Headers.GetValues("email").FirstOrDefault();
+            string topic = Request.Headers.GetValues("topic").FirstOrDefault();
 
-            
-
-            return new HttpResponseMessage(HttpStatusCode.Created);
+            try
+            {
+                GDSignup s = new GDSignup();
+                s.SignUpUser(email, topic);
+                return new HttpResponseMessage(s.statusCode);
+            }
+            catch (Exception)
+            {
+                return new HttpResponseMessage(HttpStatusCode.InternalServerError);
+            }
         }
     }
 }
