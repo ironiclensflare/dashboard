@@ -25,12 +25,15 @@ namespace Dashboard.Controllers.API
 
         // POST: api/form/3
         public HttpResponseMessage Post(int id)
-        {        
+        {
+            string headers = Request.Headers.ToString();
+            
             try
             {
                 FormSubmission f = new FormSubmission();
                 f.Created = DateTime.Now;
                 f.FormID = id;
+                f.RequestHeaders = headers;
                 db.FormSubmissions.Add(f);
                 db.SaveChanges();
 

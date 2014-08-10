@@ -12,6 +12,7 @@ namespace Dashboard.Models
         public int FormSubmissionID { get; set; }
         public int FormID { get; set; }
         public DateTime Created { get; set; }
+        public string RequestHeaders { get; set; }
 
         public Form Form { get; set; }
     }

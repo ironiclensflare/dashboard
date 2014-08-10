@@ -246,6 +246,10 @@
     <Compile Include="Migrations\201407131054277_AddTimestamp.Designer.cs">
       <DependentUpon>201407131054277_AddTimestamp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201408101040249_AddRequestInfo.cs" />
+    <Compile Include="Migrations\201408101040249_AddRequestInfo.Designer.cs">
+      <DependentUpon>201408101040249_AddRequestInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\FormSubmission.cs" />
@@ -342,6 +346,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201407131054277_AddTimestamp.resx">
       <DependentUpon>201407131054277_AddTimestamp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408101040249_AddRequestInfo.resx">
+      <DependentUpon>201408101040249_AddRequestInfo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
