@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Dashboard.Models;
+using System.Net;
 
 namespace DashboardTests
 {
@@ -8,9 +9,12 @@ namespace DashboardTests
     public class ApiControllerTests
     {
         [TestMethod]
-        public void CheckPresenceOfQueryString()
+        public void TestUserCreation()
         {
+            GDSignup s = new GDSignup();
+            s.SignUpUser("spam@ironiclensflare.com", "UKNOTTSCC_1");
             
+            Assert.IsTrue(s.statusCode == HttpStatusCode.OK);
         }
     }
 }
