@@ -16,5 +16,14 @@ namespace DashboardTests
             
             Assert.IsTrue(s.statusCode == HttpStatusCode.OK);
         }
+
+        [TestMethod]
+        public void TestInvalidTopic()
+        {
+            GDSignup s = new GDSignup();
+            s.SignUpUser("spam@ironiclensflare.com", "UKNOTTSCC_3");
+
+            Assert.IsTrue(s.statusCode == HttpStatusCode.BadRequest);
+        }
     }
 }

@@ -40,23 +40,23 @@ namespace Dashboard.Models
             {
                 w.WriteStartDocument();
                 w.WriteStartElement("subscriber");
-                    w.WriteStartElement("email");
-                    w.WriteString(email);
-                    w.WriteEndElement();
+                w.WriteStartElement("email");
+                w.WriteString(email);
+                w.WriteEndElement();
 
-                    w.WriteStartElement("send-notifications");
-                    w.WriteAttributeString("type", "boolean");
-                    w.WriteString("false");
-                    w.WriteEndElement();
+                w.WriteStartElement("send-notifications");
+                w.WriteAttributeString("type", "boolean");
+                w.WriteString("false");
+                w.WriteEndElement();
 
-                    w.WriteStartElement("topics");
-                        w.WriteAttributeString("type", "array");
-                        w.WriteStartElement("topic");
-                            w.WriteStartElement("code");
-                            w.WriteString(topic);
-                            w.WriteEndElement();
-                        w.WriteEndElement();
-                    w.WriteEndElement();
+                w.WriteStartElement("topics");
+                w.WriteAttributeString("type", "array");
+                w.WriteStartElement("topic");
+                w.WriteStartElement("code");
+                w.WriteString(topic);
+                w.WriteEndElement();
+                w.WriteEndElement();
+                w.WriteEndElement();
                 w.WriteEndElement();
                 w.WriteEndDocument();
             }
@@ -79,7 +79,7 @@ namespace Dashboard.Models
             byte[] xmlByteArray = System.Text.Encoding.ASCII.GetBytes(xmlData);
 
             WebRequest request = WebRequest.Create(apiEndpoint);
-            
+
             request.Headers.Add("Authorization", "Basic " + this.authorization);
             request.Method = "POST";
             request.ContentLength = xmlByteArray.Length;
@@ -89,8 +89,15 @@ namespace Dashboard.Models
             dataStream.Write(xmlByteArray, 0, xmlByteArray.Length);
             dataStream.Close();
 
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            return response.StatusCode;
+            try
+            {
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                return response.StatusCode;
+            }
+            catch (WebException)
+            {
+                return HttpStatusCode.BadRequest;
+            }
         }
     }
 
