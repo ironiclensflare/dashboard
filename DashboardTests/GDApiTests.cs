@@ -9,7 +9,7 @@ namespace DashboardTests
     public class ApiControllerTests
     {
         [TestMethod]
-        public void TestUserCreation()
+        public void UserCreation()
         {
             GDSignup s = new GDSignup();
             s.SignUpUser("spam@ironiclensflare.com", "UKNOTTSCC_1");
@@ -18,7 +18,7 @@ namespace DashboardTests
         }
 
         [TestMethod]
-        public void TestInvalidTopic()
+        public void InvalidTopic()
         {
             GDSignup s = new GDSignup();
             s.SignUpUser("spam@ironiclensflare.com", "UKNOTTSCC_3");
