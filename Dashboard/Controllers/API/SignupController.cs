@@ -12,8 +12,8 @@ namespace Dashboard.Controllers.API
     {
         public HttpResponseMessage Post()
         {
-            string email = Request.Headers.GetValues("email").FirstOrDefault();
-            string topic = Request.Headers.GetValues("topic").FirstOrDefault();
+            string email = Request.Headers.GetValues("Email").FirstOrDefault();
+            string topic = Request.Headers.GetValues("Topic").FirstOrDefault();
 
             try
             {
